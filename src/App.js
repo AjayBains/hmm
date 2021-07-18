@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState} from 'react'
+import { Container,Grid } from '@material-ui/core';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+const App = () => {
+    
+    const[color,setColor] =useState('white');
+    const handleChange = (e)=>{
+        setColor(e.target.value);
+       
+    }
+    return (
+        <div>
+            <Container>
+                <Grid container alignItems = 'center'>
+                    <Grid item xs={6}>
+                       <img src={`images/${color}.jpeg`} alt={`${color} t shirt`} />
+                        </Grid>
+                    <Grid item xs={6} > 
+                   <label>
+                        Pick your favorite color:
+                        <select value={color} onChange={handleChange}>
+                            <option value="maroon">Maroon</option>
+                            <option value="white">White</option>
+                            <option value="red">Red</option>
+                            
+                        </select>
+                    </label>
+                    {color}
+                    </Grid>
+                
+                
+                </Grid>
+            </Container>
+        </div>
+    )
 }
 
-export default App;
+export default App
